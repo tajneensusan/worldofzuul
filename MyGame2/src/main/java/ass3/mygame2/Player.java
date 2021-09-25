@@ -5,10 +5,12 @@ import java.util.ArrayList;
 
 
 /**
- * Write a description of class Player here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * This class holds information about player's item and inventory.
+ * The way this is used is: it receives item then add/remove those item into/from the player inventory
+ * Player class receives an item name and checks if that item exists in players item list or not. If exists then it returns the item.
+ * This class also returns list of available player item into its inventory.
+ * @author Tajneen Rahman Susan
+ * @version 2021.09.01
  */
 public class Player
 {

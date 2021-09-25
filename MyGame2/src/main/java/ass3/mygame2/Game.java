@@ -10,9 +10,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
- *
- 
+ * This class holds information about the game itself. All the important classes such as Parser, Player, Room and RoomCreation has been 
+ * initialized in here and called
+ * The way this is used is: it starts the timer using the real time. The it starts the game by creating new Player and Room(s).
+ * This class also receives user command and processes the command to check which command the user has type. If the command exists in game
+ * command list then it is redirecting the user to that action otherwise letting know the user that the command is unknown.
+ * This class also, moves user between room by following user command and printing the help messages to the user. 
+ * 
+ * @author Tajneen Rahman Susan
+ * @version 2021.09.01
  */
 
 public class Game {

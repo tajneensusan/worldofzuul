@@ -3,6 +3,15 @@ package ass3.mygame2;
 
 import java.util.ArrayList;
 
+/**
+ * This class holds information about creation of room of type Room class.
+ * The way this is used is: creates room of type Room by creating an object of Room class and adding the rooms into a list.
+ * Also, this class is returning the list of Rooms available in the game. 
+ * 
+ * @author Tajneen Rahman Susan
+ * @version 2021.09.01
+ */
+
 public class RoomCreation {
 
     private ArrayList<Room> allRoomInGame = new ArrayList();

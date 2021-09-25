@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 /**
- * Write at least 3 sentences!!!!!
+ * This class holds information about current room such as name, description , whether it is locked or not, the exits of a room and items available in that room.
+ * The way this is used is: This class initializes room. Also, this class sets exit for a room and returns description about the current room.
+ * This class also returns description with long sentence to help the player to understand where he is now.
+ * ALso, this class returns list of items available into current room and add/remove item to current room.
  * 
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29

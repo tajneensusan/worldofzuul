@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 
 /**
- * Write a description of class ItemCreation here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * This class contains information about Item list of user.
+ * The way this is used is: creates Item of type Item by creating an object of Item class and adding the items into a list.
+ * Also, this class is returning the list of Items.
+ * @author Tajneen Rahman Susan
+ * @version 2021.09.01
  */
 public class ItemCreation
 {

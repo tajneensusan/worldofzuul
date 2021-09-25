@@ -1,10 +1,13 @@
 
 package ass3.mygame2;
 /**
- * 
- *
- * @author (your name)
- * @version (a version number or a date)
+ * This class holds information about Item like name, description and healing power.
+ * The way this is used is: The class has two constructor where one is creating Item with destructive power 
+ * and another is creating Item with healing power. When an object of this class is being created then
+ * it needs three parameter such as name, description and power (destructive or healing) and then initializes Items of type Item. 
+ * This class also returns the name, description and power using accessors.
+ * @author Tajneen Rahman Susan
+ * @version 2021.09.01
  */
 public class Item
 {
