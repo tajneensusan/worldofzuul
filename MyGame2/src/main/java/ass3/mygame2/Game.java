@@ -115,7 +115,7 @@ public class Game {
         } else if (commandWord.equals("drop")) {
             dropItem(command);
         } else if (commandWord.equals("use")) {
-            //useItem(command);
+            useItem(command);
         } else if (commandWord.equals("inspect")) {
             //lookItem(command);
         } else if (commandWord.equals("quit")) {
@@ -246,13 +246,44 @@ public class Game {
             if(currentItem.getPower() > 0)
             {
                 healthCount = healthCount - currentItem.getPower();
+                System.out.println("You've just lost your health value : " + currentItem.getPower());
             }
             else
             {
                 healthCount = (int) (healthCount + currentItem.getHealingPower());
             }
-            //if(currentRoom.getName().equals("castle") && currentItem.getName().equals("key")){
-            //.setLockedStatus(false);
+            if(currentItem.getName().contains("key"))
+            {
+                if(currentRoom.getName().equals("castle") && currentItem.getName().equals("key"))
+                {
+                    currentRoom.setLockedStatus(false);
+                }
+                else
+                {
+                    System.out.println("You cannot use this item here");
+                    return;
+                }
+                
+                if(currentRoom.getName().equals("store") && currentItem.getName().equals("storeKey"))
+                {
+                    currentRoom.setLockedStatus(false);
+                }
+                else
+                {
+                    System.out.println("You cannot use this item here");
+                    return;
+                }
+                
+                if(currentRoom.getName().equals("frontGate") && currentItem.getName().equals("frontGateKey"))
+                {
+                    currentRoom.setLockedStatus(false);
+                }
+                else
+                {
+                    System.out.println("You cannot use this item here");
+                    return;
+                }
+            }
             System.out.println("You just used the " + currentItem.getName());
 
             //if(currentRoom.getName().equals("frontYard") && currentItem.getName().equals("item1")){
@@ -261,7 +292,7 @@ public class Game {
             // //currentRoom.checkRoom("castle");
             // roomKey.get(currentItem).setLockedStatus(false);
             // }
-            System.out.println("You cannot use this item here");
+            
 
         }
 
