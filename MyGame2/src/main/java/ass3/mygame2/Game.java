@@ -117,7 +117,7 @@ public class Game {
         } else if (commandWord.equals("use")) {
             useItem(command);
         } else if (commandWord.equals("inspect")) {
-            //lookItem(command);
+            lookItem(command);
         } else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
@@ -147,6 +147,7 @@ public class Game {
         System.out.println(player.printAllInventory());
     }
 
+    
     /**
      * Try to in to one direction. If there is an exit, enter the new room,
      * otherwise print an error message.
@@ -223,6 +224,24 @@ public class Game {
             //removeItemInventory(currentItem);
             //roomItem.put(currentItem, currentRoom);
             //System.out.println(currentRoom.getLongDescription());
+        }
+    }
+    
+    private void lookItem(Command command) 
+    {
+        if (!command.hasSecondWord()) {
+            // if there is no second word, we don't know where to go...
+            System.out.println("Look what?");
+            return;
+        }
+        
+        String itemFromCommand = command.getSecondWord();
+        Item currentItem = currentRoom.getRoomItem(itemFromCommand);
+        
+        if (currentItem == null) {
+            System.out.println("You don't have this  item");
+        } else {
+            currentItem.getDescription();
         }
     }
 
