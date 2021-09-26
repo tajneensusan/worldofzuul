@@ -33,6 +33,7 @@ public class Game {
     private HashMap<Item, Room> roomKey;
 
     private int timeCounter; // to count the steps
+    private int healthCount; // to count the health value
 
     /**
      * Create the game and initialise its internal map.
@@ -40,6 +41,7 @@ public class Game {
     public Game() {
         long timeStart = System.currentTimeMillis(); // use the real time
         timeCounter = 50;
+        healthCount = 0;
         parser = new Parser();
         player = new Player();
         rooms = new RoomCreation();
@@ -96,12 +98,17 @@ public class Game {
             return false;
         }
 
+        if(healthCount < 0)
+        {
+            System.out.println("Sorry your health value is less than 0.");
+            return false;
+        }
         String commandWord = command.getCommandWord();
         if (commandWord.equals("help")) {
             printHelp();
         } else if (commandWord.equals("inventory")) {
             printInventory(); // printVeggies
-        } else if (commandWord.equals("go")) {
+        } else if (commandWord.equals("go") || commandWord.equals("up")|| commandWord.equals("down")) {
             goRoom(command);
         } else if (commandWord.equals("take")) {
             takeItem(command);
@@ -236,6 +243,14 @@ public class Game {
             // you want make sure that the currentRoom is the room where you want to open the door (before the nextdoor).
             // you want to make sure the currentItem matches the key to open the next door.
 
+            if(currentItem.getPower() > 0)
+            {
+                healthCount = healthCount - currentItem.getPower();
+            }
+            else
+            {
+                healthCount = (int) (healthCount + currentItem.getHealingPower());
+            }
             //if(currentRoom.getName().equals("castle") && currentItem.getName().equals("key")){
             //.setLockedStatus(false);
             System.out.println("You just used the " + currentItem.getName());

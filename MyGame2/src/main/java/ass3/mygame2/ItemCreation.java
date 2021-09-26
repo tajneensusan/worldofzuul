@@ -26,13 +26,13 @@ public class ItemCreation
         Item item1, item2, excaliburSword, key, frontGateKey, flower, pairOfGlass, storeKey, diamond;
         
         
-        excaliburSword = new Item("excaliburSword", "The legendary Excalibur", 100);
-        key = new Item("key", "It has a shape of a heart", 100);
-        frontGateKey = new Item("frontGateKey", "To open the front gate door", 100);
-        flower = new Item("flower", "The nice red flower", 100);
-        pairOfGlass = new Item("pairOfGlass", "A pair of glass which helps to see in the dark", 10.0);
-        storeKey = new Item("storeKey", "To open the store door", 10.0);
-        diamond = new Item("diamond", "A nice big diamond", 10.0);
+        excaliburSword = new Item("excaliburSword", "The legendary Excalibur", 100.0);
+        key = new Item("key", "It has a shape of a heart", 100.0);
+        frontGateKey = new Item("frontGateKey", "To open the front gate door", 100.0);
+        flower = new Item("flower", "The nice red flower", -100);
+        pairOfGlass = new Item("pairOfGlass", "A pair of glass which helps to see in the dark", 100.0);
+        storeKey = new Item("storeKey", "To open the store door", 100.0);
+        diamond = new Item("diamond", "A nice big diamond", 100.0);
         
         allItemsInGame.add(excaliburSword);
         allItemsInGame.add(key);

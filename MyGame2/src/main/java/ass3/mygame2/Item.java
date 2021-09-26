@@ -46,4 +46,8 @@ public class Item
     public int getPower(){
         return destructivePower;
     }
+    
+    public double getHealingPower(){
+        return healingPower;
+    }
 }
