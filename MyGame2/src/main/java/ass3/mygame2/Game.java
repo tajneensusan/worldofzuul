@@ -101,7 +101,7 @@ public class Game {
         if(healthCount < 0)
         {
             System.out.println("Sorry your health value is less than 0.");
-            return false;
+            return true;
         }
         String commandWord = command.getCommandWord();
         if (commandWord.equals("help")) {
@@ -179,13 +179,17 @@ public class Game {
         }
     }
 
-    private void takeItem(Command command) {
+    private boolean takeItem(Command command) {
+        
+        boolean isGoalObectFound = false;
+        
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             System.out.println("Take what?");
-            return;
+            return isGoalObectFound;
         }
-
+        
+        
         String itemFromCommand = command.getSecondWord();
         Item currentItem = currentRoom.getRoomItem(itemFromCommand);
         //getPlayerItem(itemFromCommand);
@@ -196,11 +200,19 @@ public class Game {
             // Do the transaction here
             currentRoom.removeItemInRoom(currentItem);
             player.addItemInventory(currentItem);
+            
+            if(currentItem.getName().equals("diamond"))
+            {
+                System.out.println("you won the game!!");
+                isGoalObectFound = true;
+            }
 
             //roomItem.remove(currentItem);
             //addItemInventory(currentItem);
             //System.out.println(currentRoom.getLongDescription());
         }
+        
+        return isGoalObectFound;
     }
 
     private void dropItem(Command command) {
