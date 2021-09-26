@@ -43,8 +43,8 @@ public class RoomCreation {
         hallRoom.setExit("north", kitchen);
         hallRoom.setExit("east", gallery);
         gallery.setExit("west", hallRoom);
-        gallery.setExit("south", store);
-        store.setExit("north", gallery);
+        gallery.setExit("down", store);
+        store.setExit("up", gallery);
 
         castle.addItemInRoom(itemCreation.getItem("excaliburSword"));
         castle.addItemInRoom(itemCreation.getItem("key"));
