@@ -32,7 +32,7 @@ public class RoomCreation {
         kitchen = new Room("kitchen", "The kitchen door has a shape of a heart", false);
         frontGate = new Room("frontGate", "There is a giant ogre", true);
         hallRoom = new Room("hallRoom", "You are at the Hall room", false);
-        gallery = new Room("gallery", "You are at the Gallery", true);
+        gallery = new Room("gallery", "You are at the Gallery", false);
         store = new Room("store", "You are at the Store room", true);
         
 
@@ -49,6 +49,10 @@ public class RoomCreation {
         castle.addItemInRoom(itemCreation.getItem("excaliburSword"));
         castle.addItemInRoom(itemCreation.getItem("key"));
         kitchen.addItemInRoom(itemCreation.getItem("frontGateKey"));
+        kitchen.addItemInRoom(itemCreation.getItem("flower"));
+        hallRoom.addItemInRoom(itemCreation.getItem("pairOfGlass"));
+        gallery.addItemInRoom(itemCreation.getItem("storeKey"));
+        store.addItemInRoom(itemCreation.getItem("diamond"));
 
         allRoomInGame.add(castle);
         allRoomInGame.add(frontGate);
