@@ -34,12 +34,13 @@ public class Game {
 
     private int timeCounter; // to count the steps
     private int healthCount; // to count the health value
+    private long timeStart;
 
     /**
      * Create the game and initialise its internal map.
      */
     public Game() {
-        long timeStart = System.currentTimeMillis(); // use the real time
+        timeStart = System.currentTimeMillis(); // use the real time
         timeCounter = 50;
         healthCount = 0;
         parser = new Parser();
@@ -65,6 +66,13 @@ public class Game {
         boolean finished = false;
         while (!finished) {
             long currentTime = System.currentTimeMillis();
+            if((currentTime - timeStart) > 15)
+            {
+                System.out.println("Your time is up!!");
+                finished = true;
+                
+                return;
+            }
             Command command = parser.getCommand();
             // count the delta (currentTome - startTime)            
             finished = processCommand(command);
@@ -77,9 +85,9 @@ public class Game {
      */
     private void printWelcome() {
         System.out.println();
-        System.out.println("some background here");
-        System.out.println("objective here");
-        System.out.println("include some necessary information (e.g. time limit)");
+        System.out.println("Welcome to the World of zuul adventure game!");
+        System.out.println("your goal is to find the hidden object 'Diamond' to become the winner");
+        System.out.println("you have to complete this challenge between 15 minutes");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -137,6 +145,8 @@ public class Game {
         System.out.println("you can open the door using the use command");
 
         System.out.println("you need to clear the ogre before you can open the kitchen door");
+        
+        System.out.println("you must have to find the diamond to win the game.");
 
         System.out.println();
         System.out.println("Your command words are:");
@@ -173,8 +183,9 @@ public class Game {
             } else {
                 currentRoom = nextRoom;
                 System.out.println(currentRoom.getLongDescription());
-                //System.out.println(currentRoom.printAllRoomItems());
+                
                 // increment the timeCounter
+                timeCounter ++;
             }
         }
     }
@@ -218,7 +229,7 @@ public class Game {
     private void dropItem(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
-            System.out.println("Take what?");
+            System.out.println("Drop what?");
             return;
         }
 
@@ -227,7 +238,7 @@ public class Game {
         //getPlayerItem(itemFromCommand);
 
         if (currentItem == null) {
-            System.out.println("You can't take nothing, no?");
+            System.out.println("You can't drop anything, no?");
         } else {
             // Do the transaction here
             player.removeItemInventory(currentItem);
@@ -251,7 +262,7 @@ public class Game {
         Item currentItem = currentRoom.getRoomItem(itemFromCommand);
         
         if (currentItem == null) {
-            System.out.println("You don't have this  item");
+            System.out.println("You don't have this item");
         } else {
             currentItem.getDescription();
         }
@@ -261,7 +272,7 @@ public class Game {
     {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
-            System.out.println("Take what?");
+            System.out.println("Use what?");
             return;
         }
 
