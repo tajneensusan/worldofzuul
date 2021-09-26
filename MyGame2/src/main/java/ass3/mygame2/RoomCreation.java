@@ -18,16 +18,29 @@ public class RoomCreation {
 
     private ItemCreation itemCreation;
 
+    /**
+     * Default constructor of the class 
+     * Initializes an object of type ItemCreation
+     * and create rooms
+     */
     public RoomCreation() {
         itemCreation = new ItemCreation();
         createRooms();
     }
     
-    
+    /**
+     * Creating room of type Room class
+     * The room is created by providing room name, description and locked status
+     * The exit of the room is also created to some direction like East, west, north, south  
+     * then item is added to the room created
+     * All the rooms with exit and items are added to the game to be available for the player.
+     * 
+     */
     private void createRooms() {
 
         Room castle, kitchen, frontGate, hallRoom, gallery, store;
 
+        //creating rooms
         castle = new Room("castle", "You are at the castle", false);
         kitchen = new Room("kitchen", "The kitchen door has a shape of a heart", false);
         frontGate = new Room("frontGate", "There is a giant ogre", true);
@@ -36,6 +49,7 @@ public class RoomCreation {
         store = new Room("store", "You are at the Store room", true);
         
 
+        //setting up exit for the rooms created
         castle.setExit("east", kitchen);
         castle.setExit("south", frontGate);
         frontGate.setExit("north", castle);
@@ -46,6 +60,7 @@ public class RoomCreation {
         gallery.setExit("down", store);
         store.setExit("up", gallery);
 
+        //addiing item to the room
         castle.addItemInRoom(itemCreation.getItem("excaliburSword"));
         castle.addItemInRoom(itemCreation.getItem("key"));
         kitchen.addItemInRoom(itemCreation.getItem("frontGateKey"));
@@ -54,6 +69,7 @@ public class RoomCreation {
         gallery.addItemInRoom(itemCreation.getItem("storeKey"));
         store.addItemInRoom(itemCreation.getItem("diamond"));
 
+        //adding the room to the game
         allRoomInGame.add(castle);
         allRoomInGame.add(frontGate);
         allRoomInGame.add(kitchen);
@@ -63,6 +79,12 @@ public class RoomCreation {
 
     }
 
+    /**
+     * Checks if given room name exists in the room list available to the game or not
+     * if exists then return the Room with details as Room type or returns null
+     * @param stringRoom name of the room
+     * @return the Room with details as Room type or returns null
+     */
     public Room getRoom(String stringRoom) {
         Room roomToReturn = null;
         for (Room room : allRoomInGame) {

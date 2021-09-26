@@ -15,12 +15,19 @@ public class ItemCreation
     
     private ArrayList<Item> allItemsInGame;
     
+    /**
+     * Create the item and initialize the items.
+     */
     public ItemCreation()
     {       
         allItemsInGame = new ArrayList();
         createItems();
     }
     
+   /**
+    * Initializing items by proving item name, description and healing or destructive power 
+    * then adding the items into an array list.
+    */
     public void createItems(){
         
         Item item1, item2, excaliburSword, key, frontGateKey, flower, pairOfGlass, storeKey, diamond;
@@ -43,6 +50,12 @@ public class ItemCreation
         allItemsInGame.add(diamond);
     }
    
+   /**
+    * Checks if the item name existing in Item list or not. If exists then return the item from the item list 
+    * and if not then return null
+     * @param stringItem The description of the item.
+     * @return found item of type Item
+    */
     public Item getItem(String stringItem){
         Item itemToReturn = null;
         for(Item item: allItemsInGame){

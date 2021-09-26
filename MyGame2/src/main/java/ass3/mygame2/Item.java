@@ -16,6 +16,12 @@ public class Item
     private int destructivePower;
     private double healingPower;
     
+    /**
+     * Create a Item object. Name and description and destructivePower must be supplied
+     * @param name The name of the item.
+     * @param description The description of the item.
+     * @param destructivePower The destructivePower of the item.
+     */
     public Item(String name, String description, int destructivePower)
     {
         this.name = name;
@@ -23,6 +29,12 @@ public class Item
         this.destructivePower = destructivePower;
     }
     
+    /**
+     * Create a Item object. Name and description and healingPower must be supplied
+     * @param name The name of the item.
+     * @param description The description of the item.
+     * @param healingPower The healingPower of the item.
+     */
     public Item(String name, String description, double healingPower)
     {
         this.name = name;
@@ -30,23 +42,30 @@ public class Item
         this.healingPower = healingPower;
     }
     
-    //write accessors and mutators
+    /**
+     * @return The name of the item
+     */
     public String getName(){
         return name;
     }
     
+    /**
+     * @return The description of the item
+     */
     public String getDescription(){
         return description;
     }
     
     /**
-     * 
-     *  
+     * @return The destructivePower of the item
      */
     public int getPower(){
         return destructivePower;
     }
     
+    /**
+     * @return The healingPower of the item
+     */
     public double getHealingPower(){
         return healingPower;
     }

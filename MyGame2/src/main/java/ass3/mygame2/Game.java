@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -49,6 +49,11 @@ public class Game {
         currentRoom = rooms.getRoom("castle");  // start game outside
     }
     
+    /**
+     * Return the current room of type Room.
+     * If the room is not found then returns null.
+     * @return The current room.
+     */
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -56,6 +61,8 @@ public class Game {
     
     /**
      * Main play routine. Loops until end of play.
+     * It checks timer if it is more than 15 minutes then the game is finished. Otherwise it processes the command and
+     * redirects to the appropriate command method.
      */
     public void play() {
         printWelcome();
@@ -156,14 +163,18 @@ public class Game {
         parser.showCommands();
     }
 
+     /**
+     * Print out all item in the inventory. 
+     */
     private void printInventory() {
         System.out.println(player.printAllInventory());
     }
 
     
     /**
-     * Try to in to one direction. If there is an exit, enter the new room,
+     * Try to move the player in to one direction. If there is an exit, enter the new room,
      * otherwise print an error message.
+     * @param command The command to be processed.
      */
     private void goRoom(Command command) {
         if (!command.hasSecondWord()) {
@@ -193,6 +204,13 @@ public class Game {
         }
     }
 
+    /**
+     * Try to check if the item is available in the room or not. 
+     * If available then remove the item from room and add it to the player inventory
+     * otherwise printing that the item is not available to take. 
+     * @param command The command to be processed as item name.
+     * @return true If the item 'Diamond' is found otherwise always return false.
+     */
     private boolean takeItem(Command command) {
                
       boolean isGoalObectFound = false;
@@ -204,10 +222,8 @@ public class Game {
             return isGoalObectFound;
         }
         
-        
         String itemFromCommand = command.getSecondWord();
         Item currentItem = currentRoom.getRoomItem(itemFromCommand);
-        //getPlayerItem(itemFromCommand);
 
         if (currentItem == null) {
             System.out.println("You can't take nothing, no?");
@@ -230,6 +246,12 @@ public class Game {
         return isGoalObectFound;
     }
 
+    /**
+     * Try to check if the item is available in the players item list or not. 
+     * If available then remove the item from players item list and add it to the current room
+     * otherwise printing that the player does not have this item to drop. 
+     * @param command The command to be processed as item name.
+     */
     private void dropItem(Command command) {
       try
       {
@@ -255,6 +277,11 @@ public class Game {
       }
     }
     
+    /**
+     * Try to check if the item is available in the players item list or not. 
+     * If available then prints the description about the item otherwise printing that the player does not have this item. 
+     * @param command The command to be processed as item name.
+     */
     private void lookItem(Command command) 
     {
         try
@@ -279,7 +306,13 @@ public class Game {
             System.out.println("Sorry there was an issue processing your request.");
       }
     }
-
+    
+    /**
+     * Try to check if the item is available in the players item list or not. 
+     * If available then prints the description about the item
+     * otherwise printing that the player cannot use this item. 
+     * @param command The command to be processed as item name.
+     */
     private void useItem(Command command) // use key
     {
         try

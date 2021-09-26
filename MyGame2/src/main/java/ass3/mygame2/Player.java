@@ -16,32 +16,39 @@ public class Player
 {
     
     private ArrayList<Item> playerItem;
-    
+        
+    /**
+     * Create a list of item of Item type.
+     */
     public Player()
     {
         playerItem = new ArrayList();
     }
     
-    /**
-    * Write a description of class Player here.
-    *
-    * @param (your name)
-    * @return (a version number or a date)
-    * @exception (a version number or a date)
-    * @see (a version number or a date)
-    */
-    
+   /**
+    * Adds item to the Item list playerItem
+     * @param item The item of the Item type.
+    */    
     public void addItemInventory(Item item){
         playerItem.add(item);
         System.out.println(item.getDescription() + " was taken ");
-        //System.out.println(item.getDescription() + " was removed from the room"); // add extra information to inform user that the item has been taken
     }
 
+   /**
+    * Removes item from the Item list playerItem
+     * @param item The item of the Item type.
+    */  
     public void removeItemInventory(Item item){
         playerItem.remove(item);
         System.out.println(item.getName() + " was removed from your inventory");
     }
     
+   /**
+    * Checks the item list if the item exists matching the item name
+    * if the item exists then return the item of type Item otherwise return null
+     * @param stringItem The name of the item.
+     * @return found item of type Item
+    */  
     public Item getPlayerItem(String stringItem){
         Item itemToReturn = null;
         for(Item item: playerItem){
@@ -51,7 +58,11 @@ public class Player
         }
         return itemToReturn;
     }
-    
+        
+   /**
+    * Prints all of the item available into the item list
+     * @return found name of items available into item list
+    */  
     public String printAllInventory(){
 
         String returnString = "Items:";

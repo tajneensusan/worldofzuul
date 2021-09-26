@@ -14,10 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ItemTest {
     
-    Item item;
+    Item item, item2;
     
     public ItemTest() {
         item = new Item("gun","this is a gun", 0);
+        item2 = new Item("sword","this is a sword", 10);
     }
 
     /**
@@ -53,7 +54,22 @@ public class ItemTest {
      */
     @Test
     public void testGetDescription() {
-        assertEquals(0, 0);
+         String expected = "this is a gun";
+        String actual = item.getDescription();
+        
+        assertEquals(expected, actual);
+    }
+    
+    /**
+     * Test of getHealingPower method, of class Item.
+     */
+    @Test
+    public void testGetHealingPower() {
+        
+        double expected = 10;
+        double actual = item.getHealingPower();
+        
+        assertEquals(expected, actual);
     }
     
 }

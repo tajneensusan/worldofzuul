@@ -27,7 +27,9 @@ public class Room
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
+     * @param name The room's name.
      * @param description The room's description.
+     * @param isLocked To define if the room is locked or not.
      */
     public Room(String name, String description, boolean isLocked) 
     {
@@ -49,8 +51,8 @@ public class Room
     }
 
     /**
+     * Returns description of the room which has been defined in the constructor
      * @return The short description of the room
-     * (the one that was defined in the constructor).
      */
     public String getShortDescription()
     {
@@ -68,12 +70,20 @@ public class Room
         return "You are " + description + ".\n" + getExitString() + ".\n" + getAllItems();
     }
 
+    /**
+     * Return all of the item available into the item list
+     * @return all items available into the item list
+     */
     public String getAllItems(){
 
         return "You have some " + listOfItems();
 
     }
 
+    /**
+     * Loop through all of the item in the list of available item in the room and returns the name of the items.
+     * @return name of the items available in the room item list
+     */
     private String listOfItems(){
 
         String returnString = "items:";
@@ -110,7 +120,8 @@ public class Room
     }
 
     /**
-     * Method getRoomItem
+     * Loop through all of the item in the list of available item in the room item list
+     * and checks if the item name exists in the list or not. If available then return the item or return null
      *
      * @param stringItem taken from the command which was converted into a String
      * @return Item class according to the input String
@@ -125,34 +136,55 @@ public class Room
         return itemToReturn;
     }
 
+    /**
+     * Add item to the list of items in the room
+     * @param item of type Item class with Name, description and power (healing or destructive)
+     */
     public void addItemInRoom(Item item){
         roomItem.add(item);
     }
 
+    /**
+     * Remove item from the list of items in the room
+     * @param item of type Item class with Name, description and power (healing or destructive)
+     */
     public void removeItemInRoom(Item item){
         if(roomItem.size() > 0){
             roomItem.remove(item);
         }
     }
 
+    /**
+     * Add room with it's item to a Hashmap
+     * @param room of type Room class which will have the item given
+     * @param item of type Item class which will be available to the given room
+     */
     public void addHashMapItemInRoom(Room room, Item item){
         roomHashMapItem.put(room, item);
     }
 
     /**
-     * Method getLockedStatus
+     * Return lock status of the room
      *
-     * @return The return value
+     * @return The room lock status
      */
-
     public boolean getLockedStatus(){
         return isLocked;
     }
-
+    
+    /**
+     * set lock status of the room
+     *
+     * @param newStatus of the room lock
+     */
     public void setLockedStatus(boolean newStatus){
         isLocked = newStatus;
     }
     
+    /**
+     * 
+     * @return the name of the Room
+     */
     public String getName(){
         return name;
     }
